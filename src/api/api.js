@@ -10,7 +10,7 @@ export const fetchPosts = () => fetch(`${API_BASE}/posts`).then(res => res.json(
 export const fetchPost = (id) => fetch(`${API_BASE}/posts/${id}`).then(res => res.json());
 
 export const createPost = (data) =>
-  fetch(`${API_BASE}/`, {
+  fetch(`${API_BASE}/posts/`, {
     method: 'POST',
     headers: headers(),
     body: JSON.stringify(data)
@@ -28,6 +28,7 @@ export const register = (data) =>
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
+
   }).then(res => res.json());
 
   export const getUserDetails = async () => {
