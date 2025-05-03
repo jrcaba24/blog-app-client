@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  background-color: #161616 !important;
+  color: #fff !important;
+}
+
+input, textarea, select {
+  background-color: #1e1e1e !important;
+  color: #fff !important;
+}
