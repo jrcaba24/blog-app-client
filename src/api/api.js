@@ -1,13 +1,23 @@
 const API_BASE = 'http://localhost:4000';
 
-const headers = () => ({
-  'Content-Type': 'application/json',
-  Authorization: `Bearer ${localStorage.getItem('token')}`,
-});
+const headers = () => {
+  const token = localStorage.getItem('token'); // or sessionStorage, depending on where you store it
+  return {
+    'Content-Type': 'application/json',
+    'Authorization': token ? `Bearer ${token}` : '', // If token exists, include it in the header
+  };
+};
 
-export const fetchPosts = () => fetch(`${API_BASE}/posts`).then(res => res.json());
+export const fetchPosts = () => 
+    fetch(`${API_BASE}/posts`, {
+        method: 'GET',
+        headers: headers()
+    }).then(res => res.json());
 
-export const fetchPost = (id) => fetch(`${API_BASE}/posts/${id}`).then(res => res.json());
+export const fetchPost = (id) => fetch(`${API_BASE}/posts/${id}`, {
+  method: 'GET',
+  headers: headers()
+}).then(res => res.json());
 
 export const createPost = (data) =>
   fetch(`${API_BASE}/posts/`, {
@@ -46,6 +56,19 @@ export const fetchComments = (postId) =>
 export const addComment = (postId, data) =>
   fetch(`${API_BASE}/comments/${postId}`, {
     method: 'POST',
-    headers: headers(),
+    headers: headers(), // This will now include the Authorization header
     body: JSON.stringify(data)
   }).then(res => res.json());
+
+  export const deleteComment = (commentId) =>
+    fetch(`${API_BASE}/comments/${commentId}`, {
+      method: 'DELETE',
+      headers: headers()
+    }).then(async res => {
+      if (!res.ok) {
+        const error = await res.json().catch(() => ({}));
+        throw new Error(error.error || 'Failed to delete comment');
+      }
+      return res.json();
+    });
+  

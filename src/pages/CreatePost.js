@@ -35,16 +35,6 @@ export default function CreatePost() {
           />
         </div>
         <div className="mb-2">
-          <label htmlFor="postAuthor" className="form-label">Author</label>
-          <input
-            type="text"
-            id="postAuthor"
-            className="form-control"
-            placeholder="Enter post author"
-            onChange={e => setPost({ ...post, author: e.target.value })}
-          />
-        </div>
-        <div className="mb-2">
           <label htmlFor="postContent" className="form-label">Content</label>
           <textarea
             id="postContent"
