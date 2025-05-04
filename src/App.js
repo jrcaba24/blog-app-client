@@ -10,6 +10,7 @@ import Register from './pages/Register';
 import PostDetails from './pages/PostDetails';
 import CreatePost from './pages/CreatePost';
 import UserProfile from './pages/UserProfile';
+import Posts from './pages/Posts';
 import { UserProvider } from './UserContext';
 import NotyfContext from './NotyfContext';
 
@@ -25,6 +26,7 @@ function App() {
           <div className="container mt-4">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/posts" element={<Posts />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/posts/:id" element={<PostDetails />} />
