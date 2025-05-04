@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:4000';
+const API_BASE = 'https://blog-app-server-eaa1.onrender.com';
 
 const headers = () => {
   const token = localStorage.getItem('token'); // or sessionStorage, depending on where you store it
